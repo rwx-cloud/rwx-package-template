@@ -1,0 +1,35 @@
+on:
+  github:
+    pull_request:
+      init:
+        commit-sha: ${{ event.git.sha }}
+        publish: false
+    push:
+      if: ${{ event.git.branch == 'main' }}
+      init:
+        commit-sha: ${{ event.git.sha }}
+        publish: true
+
+base:
+  image: ubuntu:24.04
+  config: rwx/base 1.0.0
+
+tasks:
+  - key: checkout
+    call: git/clone 2.0.3
+    with:
+      repository: https://github.com/example-owner/example-repo.git
+      ref: ${{ init.commit-sha }}
+
+  - key: package
+    call: rwx/package 1.0.0
+
+  - key: test
+    call: ${{ run.dir }}/test.yml
+    init:
+      package-digest: ${{ tasks.package.values.digest }}
+
+  - key: publish
+    after: test
+    if: ${{ init.publish }}
+    run: ...

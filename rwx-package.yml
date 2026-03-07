@@ -1,0 +1,32 @@
+# Name of the package in the format <org>/<package-name>
+name: example-org/example-package
+version: 1.0.0
+description: A short description of what this package does
+source_code_url: https://github.com/example-org/example-package
+issue_tracker_url: https://github.com/example-org/example-package/issues
+
+# Parameters are inputs provided by the caller.
+# Each parameter can have: description, required, default.
+# If neither required nor default is set, the parameter is optional and defaults to empty.
+parameters:
+  example-required-param:
+    description: "A parameter that must be provided"
+    required: true
+  example-optional-param-with-default:
+    description: "A parameter with a default value"
+    default: "my-default"
+  example-optional-param:
+    description: "An optional parameter"
+    required: false
+
+tasks:
+  - key: example-task
+    run: |
+      echo "TODO: Not implemented yet"
+      echo "Example Value" > $RWX_VALUES/result
+    env:
+      PARAM: ${{ params.example-required-param }}
+
+# Optional. Expose output values from a task to the caller
+outputs:
+  values-from: [example-task]

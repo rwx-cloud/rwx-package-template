@@ -1,0 +1,7 @@
+base:
+  image: ubuntu:24.04
+  config: rwx/base 1.0.0
+
+tasks:
+  - key: test-example-package
+    call: ${{ init.package-digest }}
