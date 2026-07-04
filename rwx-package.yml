@@ -1,5 +1,5 @@
 # Name of the package in the format <org>/<package-name>
-name: example-org/example-package
+name: rwx/example-package
 version: 1.0.0
 description: A short description of what this package does
 source_code_url: https://github.com/example-org/example-package

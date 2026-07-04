@@ -5,3 +5,5 @@ base:
 tasks:
   - key: test-example-package
     call: ${{ init.package-digest }}
+    with:
+      example-required-param: true
