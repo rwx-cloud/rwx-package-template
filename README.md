@@ -30,8 +30,8 @@ tasks:
 
 Output values are optional.
 
-| Name | Description |
-| --- | --- |
+| Name     | Description                     |
+| -------- | ------------------------------- |
 | `result` | Description of the output value |
 
 Access outputs from a calling task:
